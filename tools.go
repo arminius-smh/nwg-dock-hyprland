@@ -672,6 +672,10 @@ func getIcon(appName string) (string, error) {
 	if strings.HasPrefix(strings.ToUpper(appName), "GIMP") {
 		return "gimp", nil
 	}
+	if strings.HasPrefix(appName, "steam_app_") {
+		gameid := strings.Split(appName,"_")[2]
+		return "steam_icon_" + gameid, nil
+	}
 	p := ""
 	for _, d := range appDirs {
 		path := filepath.Join(d, fmt.Sprintf("%s.desktop", appName))
